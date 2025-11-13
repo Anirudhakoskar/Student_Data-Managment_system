@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ADD NEW USER</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <style>
+        button {
+            background-color: greenyellow;
+        }
+    </style>
+</head>
+<body>
+   <div class="container col-6 offset-3 mt-4">
+     <h2>To add new user fill up all details</h2>
+    <form method="POST" action="/user" class=" mt-4">
+        <div class="mb-3 ">
+           <label for="userId" class="form-label">Enter id</label>
+            <input type="text" name="newId" class="form-control" id="userId" placeholder="enter id" required>
+            
+        </div>
+
+         <div class="mb-3">
+           <label for="userName" class="form-label">Enter username</label>
+            <input type="text" name="newUsername" class="form-control" id="userName" placeholder="enter username" required>
+            <div class="valid-feedback">Username looks good!</div>
+             <div class="invalid-feedback">Username required!</div>
+        </div>
+
+       <div class="row">
+         <div class="mb-3 col-md-6">
+           <label for="userEmail" class="form-label">Enter email</label>
+            <input type="email" name="newEmail" class="form-control" id="userEmail"placeholder="enter email" required>
+        </div>
+         <div class="mb-3 col-md-6">
+           <label for="userPass" class="form-label">Create Password</label>
+            <input type="password" name="password" class="form-control" id="userPass" placeholder="Set password" required>
+        </div>
+       </div>
+        
+        <button class="btn btn-success">Add user</button> 
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<% if (error) { %>
+  <script>
+    Swal.fire({
+      icon: "error",
+      title: "Oops...",
+      text: "<%= error %>",
+    });
+  </script>
+<% } %>
+
+    </form>
+   </div>
+</body>
+</html>
