@@ -1,5 +1,3 @@
-// Taking Users Information >>>>>
-
 CREATE TABLE USER (
     id VARCHAR(50) PRIMARY KEY,
     user VARCHAR(50) UNIQUE,
