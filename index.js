@@ -10,6 +10,7 @@ app.use(express.urlencoded({ extended: true }));
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "/views"));
 
+//connection with mysql
 const connection = mysql.createConnection({
   host: "localhost",
   user: "root",
@@ -17,7 +18,7 @@ const connection = mysql.createConnection({
   password: "Ani@2005",
 });
 
-// HOME ROUTE
+// HOME ROUTE >>>>
 app.get("/", (req, res) => {
   let q = "SELECT COUNT(*) AS count FROM user";
   connection.query(q, (err, result) => {
@@ -30,7 +31,7 @@ app.get("/", (req, res) => {
   });
 });
 
-// SHOW USERS ROUTE
+// SHOW USERS ROUTE >>>>>
 app.get("/user", (req, res) => {
   let q = "SELECT * FROM user";
   connection.query(q, (err, users) => {
@@ -42,7 +43,7 @@ app.get("/user", (req, res) => {
   });
 });
 
-// EDIT ROUTE
+// EDIT ROUTE >>>>>
 app.get("/user/:id/edit", (req, res) => {
   let { id } = req.params;
   let q = "SELECT * FROM user WHERE id = ?";
@@ -57,7 +58,7 @@ app.get("/user/:id/edit", (req, res) => {
   });
 });
 
-// UPDATE USER ROUTE
+// UPDATE USER ROUTE >>>>>
 app.patch("/user/:id", (req, res) => {
   let { id } = req.params;
   let { password, newUsername, newEmail } = req.body;
@@ -80,7 +81,7 @@ app.patch("/user/:id", (req, res) => {
   });
 });
 
-// DELETE ROUTE (confirm page)
+// DELETE ROUTE (confirm page) >>>>>
 app.get("/user/:id/delete", (req, res) => {
   let { id } = req.params;
   let q = "SELECT * FROM user WHERE id = ?";
